@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model vvarenasales {
+  utilityid    Int       @id @default(autoincrement())
+  clientid     Int
+  vendorid     Int
+  debitaccount String?   @db.VarChar(255)
+  amount       BigInt?
+  tid          String?   @unique(map: "tid") @db.VarChar(255)
+  salesdate    DateTime? @db.Date
+  time         DateTime? @db.Time(0)
+  ctime        DateTime  @db.DateTime(0)
+  statusid     Int?
+  reply        String?   @db.VarChar(255)
+  payref       String    @db.VarChar(100)
+
+  @@index([clientid], map: "clientid")
+  @@index([payref], map: "payref")
+  @@index([statusid, salesdate], map: "statusid")
+}
+
+model vvarenavendors {
+  vendorid   Int    @id @default(autoincrement())
+  vendorname String @db.VarChar(200)
+  statusid   Int
+  sales      Int
+  phone      String @db.VarChar(14)
+}
