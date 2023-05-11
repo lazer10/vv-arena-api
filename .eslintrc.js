@@ -10,7 +10,6 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'import', 'unused-imports'],
   rules: {
-    // inherited from Adam's prettier config
     'max-len': ['warn', {
       code: 100,
       ignorePattern: '(^import .*|d=\'([\\s\\S]*?)\'|className=\'([\\s\\S]*?)\')',
@@ -20,7 +19,7 @@ module.exports = {
       ignoreRegExpLiterals: true
     }],
     'comma-dangle': ['error', 'never'],
-    semi: ['error', 'never'],
+    semi: [2, 'always'],
     quotes: ['error', 'single'],
     'jsx-quotes': ['error', 'prefer-single'],
     'object-curly-spacing': ['error', 'always'],
@@ -80,4 +79,4 @@ module.exports = {
       'no-undef': 'off'
     }
   }]
-}
+};
